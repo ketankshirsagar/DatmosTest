@@ -1,0 +1,32 @@
+//I have used Selenium with Java and TestNG Framework
+
+Class Login{
+WebDriver driver;
+
+//Webdriver initiations and opening the browser in before test method using testNG annotation
+@BeforeTest
+public void beforeTest(){
+	System.setProperty("WebDriver.Chrome.driver","Path of Webdriver");
+	driver = new ChromeDriver();
+	driver.get("https://accounts.datmos.io/login");
+	}
+
+//Program to check login flow
+@Test
+public test(){
+	driver.findElement(by.id("id")).sendKeys("Username");
+	driver.findElement(by.id("password")).sendKeys("password");
+	driver.findElement(by.id("login")).click;
+	
+	if (driver.findElement(by.id("Home")).isDisplayed()){
+		Reporter.log("Log in Successful");	
+	}
+	else{Reporter.log("Log in Failed");}
+	}
+
+//Closing the browser instances in After test method
+@AfterTest
+public void afterTest(){
+	Driver.quit();
+	}
+}
